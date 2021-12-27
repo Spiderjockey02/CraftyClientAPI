@@ -1,13 +1,21 @@
 {
   "name": "craftyapi",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "A API wrapper for the Minecraft server controller, CraftyControl.",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "crafty",
+    "API",
+    "JS"
+  ],
+  "files": [
+    "src/*",
+    "tests/*"
+  ],
+  "author": "SpiderJockey02",
   "license": "ISC",
   "devDependencies": {
     "eslint": "^8.4.1"
