@@ -1,7 +1,9 @@
-const	{ sendPostRequest, sendGetRequest } = require('./functions');
+import { sendPostRequest, sendGetRequest } from './functions';
 
-module.exports = class CraftyAPI {
-	constructor(url, token) {
+export default class CraftyAPI {
+	token: string;
+	url: string;
+	constructor(url: string, token: string) {
 		this.token = token;
 		this.url = url;
 	}
@@ -32,31 +34,31 @@ module.exports = class CraftyAPI {
 		return sendGetRequest(`${this.url}/api/v1/list_servers?token=${this.token}`);
 	}
 
-	async startServer(id) {
+	async startServer(id: string) {
 		return sendPostRequest(`${this.url}/api/v1/server/start?token=${this.token}&id=${id}`);
 	}
 
-	async stopServer(id) {
+	async stopServer(id: string) {
 		return sendPostRequest(`${this.url}/api/v1/server/stop?token=${this.token}&id=${id}`);
 	}
 
-	async restartServer(id) {
+	async restartServer(id: string) {
 		return sendPostRequest(`${this.url}/api/v1/server/restart?token=${this.token}&id=${id}`);
 	}
 
-	async forceBackup(id) {
+	async forceBackup(id: string) {
 		return sendPostRequest(`${this.url}/api/v1/server/force_backup?token=${this.token}&id=${id}`);
 	}
 
-	async searchLogs(id, query) {
+	async searchLogs(id: string, query: string) {
 		return sendPostRequest(`${this.url}/api/v1/server/search_logs?token=${this.token}&id=${id}&query=${query}`);
 	}
 
-	async getLogs(id) {
+	async getLogs(id: string) {
 		return sendGetRequest(`${this.url}/api/v1/server/get_logs?token=${this.token}&id=${id}`);
 	}
 
-	async runCommand(id, command) {
+	async runCommand(id: string, command: string) {
 		return sendPostRequest(`${this.url}/api/v1/server/send_command?token=${this.token}&id=${id}`, { command: command });
 	}
-};
+}
