@@ -1,9 +1,15 @@
 import { sendPostRequest, sendGetRequest } from './functions';
 
+type Crafty = {
+	url: string
+	token: string
+}
+
+
 export default class CraftyAPI {
 	token: string;
 	url: string;
-	constructor(url: string, token: string) {
+	constructor({ url, token }: Crafty) {
 		this.token = token;
 		this.url = url;
 	}
@@ -12,19 +18,19 @@ export default class CraftyAPI {
     CRAFTY endpoints
   */
 	async fetchHost() {
-		return sendGetRequest(`${this.url}/api/v1/host_stats?token=${this.token}`);
+		return sendGetRequest(`${this.url}/api/v1/stats/node?token=${this.token}`);
 	}
 
 	async fetchServers() {
-		return sendGetRequest(`${this.url}/api/v1/server_stats?token=${this.token}`);
+		return sendGetRequest(`${this.url}/api/v1/stats/servers?token=${this.token}`);
 	}
 
-	async addUser() {
-		return sendPostRequest(`${this.url}/api/v1/crafty/add_user?token=${this.token}`);
+	async addUser(username: string, password: string) {
+		return sendPostRequest(`${this.url}/api/v1/users/create_user?token=${this.token}&username=${username}&password=${password}`);
 	}
 
-	async deleteUser() {
-		return sendPostRequest(`${this.url}/api/v1/crafty/del_user?token=${this.token}`);
+	async deleteUser(userId: string) {
+		return sendPostRequest(`${this.url}/api/v1/users/delete_user?token=${this.token}&user_id=${userId}`);
 	}
 
 	/*

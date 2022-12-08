@@ -6,7 +6,8 @@
   "scripts": {
     "build": "tsc",
     "prestart": "npm run build",
-    "start": "node ."
+    "start": "node .",
+    "test": "node dist/tests/index"
   },
   "keywords": [
     "crafty",
