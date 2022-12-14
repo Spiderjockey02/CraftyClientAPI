@@ -1,6 +1,6 @@
 {
   "name": "craftyapi",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "A API wrapper for the Minecraft server controller, CraftyControl.",
   "main": "dist/index.js",
   "scripts": {
